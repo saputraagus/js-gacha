@@ -4,7 +4,7 @@ class Player {
   }
 
   generateToken () {
-    const random = ~~[Math.random() * 100]
+    const random = Math.floor(Math.random() * 100)
     const token = this.username + random.toString()
     return token
   }

@@ -85,6 +85,17 @@ section {
   cursor: pointer;
 }
 
+.stopButton {
+  padding: 20px;
+  border: none;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 2em;
+  width: 200px;
+  height: 100px;
+  cursor: pointer;
+}
+
 .box {
   font-size: 5em;
   margin: 10px;

@@ -8,6 +8,8 @@ const box1 = document.getElementById("box1")
 const box2 = document.getElementById("box2")
 const box3 = document.getElementById("box3")
 const rewardImage = document.getElementById("imgReward")
+const startButton = document.getElementById("startButton")
+const stopButton = document.getElementById("stopButton")
 
 const player = new Player()
 let default_option = ['😍', '🤣', '😱']
@@ -15,10 +17,12 @@ box1.textContent = default_option[0]
 box2.textContent = default_option[1]
 box3.textContent = default_option[2]
 
+let rolling = null
+
 function dice() {
   let gacha = []
   for (let i = 0; i < default_option.length; i++) {
-    const roll = default_option[~~(Math.random() * default_option.length)]
+    const roll = default_option[Math.floor(Math.random() * default_option.length)]
     gacha.push(roll)
   }
   return gacha
@@ -52,18 +56,28 @@ function winner() {
 
 function start() {
   //selama
-  const rolling = setInterval(function () {
+  startButton.style.display = "none"
+  stopButton.style.display = "block"
+  rolling = setInterval(function () {
     const result = dice()
     box1.textContent = result[0]
     box2.textContent = result[1]
     box3.textContent = result[2]
   }, 100);
-
-  //ketika
+  // //ketika
   setTimeout(function () {
     clearInterval(rolling)
     winner()
+    startButton.style.display = "block"
+    stopButton.style.display = "none"
   }, 3000);
+}
+
+function stop() {
+  startButton.style.display = "block"
+  stopButton.style.display = "none"
+  clearInterval(rolling)
+  winner()
 }
 
 onload = function () {
@@ -72,9 +86,11 @@ onload = function () {
   if (token && token != null) {
     registerForm.style.display = "none"
     logoutForm.style.display = "block"
+    stopButton.style.display = "none"
   } else {
     registerForm.style.display = "block"
     logoutForm.style.display = "none"
+    stopButton.style.display = "none"
   }
 }
 
