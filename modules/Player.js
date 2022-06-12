@@ -4,7 +4,7 @@ class Player {
   }
 
   generateToken () {
-    const random = ~~[Math.random() * 10000]
+    const random = ~~[Math.random() * 100]
     const token = this.username + random.toString()
     return token
   }
@@ -20,11 +20,13 @@ class Player {
 
   get register() {
     sessionStorage.setItem('token', this.generateToken())
+    title.textContent = 'Welcome ' + sessionStorage.getItem('token')
+    document.title = 'Welcome ' + sessionStorage.getItem('token')
     registerForm.style.display = "none"
     logoutForm.style.display = "block"
     setTimeout( function () {
       location.href = '#start'
-    }, 500)
+    }, 1000)
   }
 
   get logout() {

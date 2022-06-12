@@ -1,6 +1,7 @@
 // declaring element
 const username = document.getElementById("username")
 const registerForm = document.getElementById("registerForm")
+const title = document.getElementById("title")
 const logoutForm = document.getElementById("logoutForm")
 const startSection = document.getElementById("start")
 const box1 = document.getElementById("box1")
