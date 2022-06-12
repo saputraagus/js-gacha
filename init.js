@@ -4,6 +4,8 @@ const registerForm = document.getElementById("registerForm")
 const title = document.getElementById("title")
 const logoutForm = document.getElementById("logoutForm")
 const startSection = document.getElementById("start")
+const rewardSection = document.getElementById("reward")
+const topDirection = document.getElementById("top")
 const box1 = document.getElementById("box1")
 const box2 = document.getElementById("box2")
 const box3 = document.getElementById("box3")
@@ -49,6 +51,7 @@ function reward() {
 function winner() {
   if (box1.textContent == box2.textContent && box1.textContent == box3.textContent) {
     reward()
+    rewardSection.style.display = "block"
     location.href = "#reward"
   } else {
     console.log('lose')
@@ -71,7 +74,8 @@ function start() {
     box2.textContent = result[1]
     box3.textContent = result[2]
   }, 100);
-  // //ketika
+  
+  //ketika
   setTimeout(function () {
     clearInterval(rolling)
     winner()
@@ -94,16 +98,26 @@ onload = function () {
     registerForm.style.display = "none"
     logoutForm.style.display = "block"
     stopButton.style.display = "none"
+    startSection.style.display = "block"
+    rewardSection.style.display = "block"
+    topDirection.style.display = "flex"
   } else {
     registerForm.style.display = "block"
     logoutForm.style.display = "none"
     stopButton.style.display = "none"
+    startSection.style.display = "none"
+    rewardSection.style.display = "none"
+    topDirection.style.display = "none"
   }
 }
 
 function register() {
   player.username = username.value
   player.register
+  startSection.style.display = "block"
+  rewardSection.style.display = "block"
+  topDirection.style.display = "flex"
+  rewardSection.style.display = "none"
 }
 
 function logout() {
