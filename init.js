@@ -10,6 +10,7 @@ const box3 = document.getElementById("box3")
 const rewardImage = document.getElementById("imgReward")
 const startButton = document.getElementById("startButton")
 const stopButton = document.getElementById("stopButton")
+const notification = document.getElementById("notification")
 
 const player = new Player()
 let default_option = ['😍', '🤣', '😱']
@@ -51,13 +52,19 @@ function winner() {
     location.href = "#reward"
   } else {
     console.log('lose')
+    let notif = document.createElement('h1')
+    // notif.textContent = 'YOU LOSE! 👎 CLICK START BUTTON TO TRY AGAIN'
+    // notification.appendChild(notif)
+    notification.innerHTML = 'YOU LOSE! 👎 CLICK START BUTTON TO TRY AGAIN'
   }
 }
 
 function start() {
-  //selama
+  notification.innerHTML = ''
   startButton.style.display = "none"
   stopButton.style.display = "block"
+
+  //selama
   rolling = setInterval(function () {
     const result = dice()
     box1.textContent = result[0]
